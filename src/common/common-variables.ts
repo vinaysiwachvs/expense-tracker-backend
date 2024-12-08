@@ -19,7 +19,7 @@ export default class CommonVariables {
 		console.log('Common Variables initialized');
 		CommonVariables.PORT = process.env.PORT || '6001';
 		CommonVariables.MONGO_URI = process.env.MONGO_URI;
-		CommonVariables.MONGO_DB_NAME = process.env.MONGO_DB_NAME || 'Expense Tracker';
+		CommonVariables.MONGO_DB_NAME = process.env.MONGO_DB_NAME || 'expense-tracker';
 		CommonVariables.MONGO_TIMEOUT = process.env.MONGO_TIMEOUT || 10000;
 		CommonVariables.NODE_ENV = process.env.NODE_ENV || 'development';
 		CommonVariables.APP_SERVICE_NAME = process.env.APP_SERVICE_NAME;

@@ -1,0 +1,34 @@
+@url = http://localhost:5001/api/user
+@id = 67546e7bbc9ff46dc5d09423
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU0NmU3YmJjOWZmNDZkYzVkMDk0MjMiLCJpYXQiOjE3MzM2MjYwMzEsImV4cCI6MTczMzcxMjQzMX0.QAkBaq7Yfo-24X6OaB9TtNPlQ0Yl8YlAnUW3-hI1ADY
+
+### Get all user
+GET {{url}}
+Authorization: bearer {{token}}
+
+### Get a specific user by id
+GET {{url}}/{{id}}
+Authorization: bearer {{token}}
+
+### Create a user
+POST {{url}}
+Content-Type: application/json
+
+{
+    "name":"vinay",
+    "email":"email-1@gmail.com",
+    "password":"password"
+}
+
+### Login User
+POST {{url}}/login
+Content-Type: application/json
+
+{
+    "email":"email@gmail.com",
+    "password":"password"
+}
+
+### Logout User
+POST {{url}}/logout
+Authorization: bearer {{token}}
