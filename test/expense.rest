@@ -1,0 +1,37 @@
+@url = http://localhost:5001/api/expense
+@id = 67567542e74206c4ec2b7145
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU2NzA0Y2MzNTFlMTU3YzlmNjc2MjEiLCJpYXQiOjE3MzM3MTgwOTIsImV4cCI6MTczMzgwNDQ5Mn0.qwTvTq-tiPiRVgdnZ3g3PzdWUq1RoGG7iYDy79bDmok
+
+### Get all expenses
+GET {{url}}
+Authorization: bearer {{token}}
+
+### Get expense by id
+GET {{url}}/{{id}}
+Authorization: bearer {{token}}
+
+### Create Expense
+POST {{url}}
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+    "name":"Laptop",
+    "category":"Food",
+    "amount":5000
+}
+
+### Update Expense
+PATCH {{url}}/{{id}}
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+    "name":"Burger King",
+    "category":"Food",
+    "amount":4000
+}
+
+### Remove Expense by id
+DELETE {{url}}/{{id}}
+Authorization: bearer {{token}}

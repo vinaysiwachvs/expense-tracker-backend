@@ -34,12 +34,11 @@ export default class UserService {
 			name: name,
 			email: email,
 			password: hashedPassword,
-			expenses: [],
+			total_expense: 0,
 			token: '',
 		};
 
 		const user = await this._save(userInput, true);
-
 		const token = await generateToken(user._id as string);
 
 		user.token = token;
@@ -68,6 +67,11 @@ export default class UserService {
 	public async logout(user: IUser): Promise<void> {
 		user.is_logged_in = false;
 		user.token = '';
+		await this._save(user, false);
+	}
+
+	public async addExpense(user: IUser, amount: number): Promise<void> {
+		user.total_expense += amount;
 		await this._save(user, false);
 	}
 

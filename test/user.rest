@@ -1,6 +1,6 @@
 @url = http://localhost:5001/api/user
 @id = 67546e7bbc9ff46dc5d09423
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU0NmU3YmJjOWZmNDZkYzVkMDk0MjMiLCJpYXQiOjE3MzM2MjYwMzEsImV4cCI6MTczMzcxMjQzMX0.QAkBaq7Yfo-24X6OaB9TtNPlQ0Yl8YlAnUW3-hI1ADY
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU2NzA0Y2MzNTFlMTU3YzlmNjc2MjEiLCJpYXQiOjE3MzM3MTgwOTIsImV4cCI6MTczMzgwNDQ5Mn0.qwTvTq-tiPiRVgdnZ3g3PzdWUq1RoGG7iYDy79bDmok
 
 ### Get all user
 GET {{url}}

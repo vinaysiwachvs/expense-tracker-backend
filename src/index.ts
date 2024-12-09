@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import createServer from './app';
 import CommonVariables from './common/common-variables';
 import userRoute from './route/user-route';
+import expenseRoute from './route/expense-route';
 import { defaultErrorHandler } from './common/middleware/error-middleware';
 
 const app = createServer();
@@ -17,8 +18,8 @@ app.get('/', (req: Request, res: Response) => {
 	res.json(response);
 });
 
-//User Api
 app.use('/api/user', userRoute);
+app.use('/api/expense', expenseRoute);
 
 // Error Handler Middleware
 app.use(defaultErrorHandler);

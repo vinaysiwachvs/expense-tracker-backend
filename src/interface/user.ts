@@ -5,7 +5,7 @@ export interface IUser {
 	name: string;
 	email: string;
 	password: string;
-	expenses?: string[] | mongoose.Types.ObjectId[];
+	total_expense: number;
 	forgot_password?: boolean;
 	is_logged_in?: boolean;
 	token?: string;

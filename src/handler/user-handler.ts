@@ -5,7 +5,6 @@ const userController = new UserController();
 
 export const get = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const loggedInUser = req.body.loggedInUser;
 		const users = await userController.get();
 		res.status(200).json(users);
 	} catch (error) {

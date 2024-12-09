@@ -1,9 +1,14 @@
+import mongoose from 'mongoose';
+
 export interface IExpense {
-	_id?: string;
-	title: string;
+	_id?: string | mongoose.Types.ObjectId;
+	name: string;
 	amount: number;
 	category: ExpenseCategoryEnum;
-	date: Date;
+	created_by: string;
+	created_at?: Date;
+	updated_by: string;
+	updated_at?: Date;
 }
 
 export enum ExpenseCategoryEnum {
