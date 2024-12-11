@@ -1,8 +1,10 @@
-import { OP_MSG } from './../../node_modules/mongodb/src/cmap/wire_protocol/constants';
 import { generateToken } from '../common/utils/token-utils';
 import { IUser } from '../interface/user';
 import User from '../model/user';
 import bcrypt from 'bcrypt';
+import { ICategory } from '../interface/categroy';
+import { IBudget } from '../interface/budget';
+import { IExpense } from '../interface/expense';
 
 export default class UserService {
 	private async _save(userInput: IUser, isNew: boolean = true): Promise<IUser> {
@@ -16,7 +18,7 @@ export default class UserService {
 	}
 
 	public async getById(id: string): Promise<IUser> {
-		const user = await User.findById(id);
+		const user = await User.findById(id).lean();
 		if (!user) {
 			throw new Error('User not found');
 		}
@@ -35,7 +37,11 @@ export default class UserService {
 			email: email,
 			password: hashedPassword,
 			total_expense: 0,
+			total_budget: 0,
 			token: '',
+			category: [],
+			expense: [],
+			budget: [],
 		};
 
 		const user = await this._save(userInput, true);
@@ -70,8 +76,36 @@ export default class UserService {
 		await this._save(user, false);
 	}
 
-	public async addExpense(user: IUser, amount: number): Promise<void> {
-		user.total_expense += amount;
+	public async addExpense(userId: string, expense: IExpense): Promise<void> {
+		const user = await this.getById(userId);
+		user.expense.push({ _id: expense._id as string });
+		user.total_expense += expense.amount;
+		await this._save(user, false);
+	}
+
+	public async removeExpense(userId: string, expenseId: string, amount: number): Promise<void> {
+		const user = await this.getById(userId);
+		user.expense = user.expense.filter((e) => e._id.toString() !== expenseId);
+		user.total_expense -= amount;
+		await this._save(user, false);
+	}
+
+	public async addBudget(userId: string, budget: IBudget): Promise<void> {
+		const user = await this.getById(userId);
+		user.budget.push({ _id: budget._id as string });
+		user.total_budget += budget.total_amount;
+		await this._save(user, false);
+	}
+
+	public async removeBudget(userId: string, budgetId: string, amount: number): Promise<void> {
+		const user = await this.getById(userId);
+		user.budget = user.budget.filter((b) => b._id.toString() !== budgetId.toString());
+		user.total_budget -= amount;
+		await this._save(user, false);
+	}
+
+	public async editCategory(user: IUser, category: ICategory): Promise<void> {
+		user.category.push({ _id: category._id as string });
 		await this._save(user, false);
 	}
 

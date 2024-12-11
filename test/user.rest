@@ -1,6 +1,6 @@
-@url = http://localhost:5001/api/user
-@id = 67546e7bbc9ff46dc5d09423
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU2NzA0Y2MzNTFlMTU3YzlmNjc2MjEiLCJpYXQiOjE3MzM3MTgwOTIsImV4cCI6MTczMzgwNDQ5Mn0.qwTvTq-tiPiRVgdnZ3g3PzdWUq1RoGG7iYDy79bDmok
+@url = http://localhost:5001/api/users
+@id = 6759322ea7cc2b1eff0c0c2f
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU5MzIyZWE3Y2MyYjFlZmYwYzBjMmYiLCJpYXQiOjE3MzM4OTkxNzEsImV4cCI6MTczMzk4NTU3MX0.wdjDtR0ipQQdTnKNJ88shLolaSm6I8KOvZVHPQNeHXM
 
 ### Get all user
 GET {{url}}
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 {
     "name":"vinay",
-    "email":"email-1@gmail.com",
+    "email":"email@gmail.com",
     "password":"password"
 }
 

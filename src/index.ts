@@ -1,8 +1,12 @@
 import { Request, Response } from 'express';
 import createServer from './app';
 import CommonVariables from './common/common-variables';
+//common routes
 import userRoute from './route/user-route';
 import expenseRoute from './route/expense-route';
+import budgetRoute from './route/budget-route';
+import categoryRoute from './route/category-route';
+
 import { defaultErrorHandler } from './common/middleware/error-middleware';
 
 const app = createServer();
@@ -18,8 +22,10 @@ app.get('/', (req: Request, res: Response) => {
 	res.json(response);
 });
 
-app.use('/api/user', userRoute);
-app.use('/api/expense', expenseRoute);
+app.use('/api/users', userRoute);
+app.use('/api/expenses', expenseRoute);
+app.use('/api/budgets', budgetRoute);
+app.use('/api/categories', categoryRoute);
 
 // Error Handler Middleware
 app.use(defaultErrorHandler);

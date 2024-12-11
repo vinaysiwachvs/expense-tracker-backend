@@ -5,8 +5,8 @@ const expenseController = new ExpenseController();
 
 export const get = async (req: Request, res: Response, next: NextFunction) => {
 	try {
-		const users = await expenseController.get();
-		res.status(200).json(users);
+		const expenses = await expenseController.get();
+		res.status(200).json(expenses);
 	} catch (error) {
 		next(error);
 	}
@@ -15,8 +15,18 @@ export const get = async (req: Request, res: Response, next: NextFunction) => {
 export const getById = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const { id } = req.params;
-		const user = await expenseController.getById(id);
-		res.status(200).json(user);
+		const expense = await expenseController.getById(id);
+		res.status(200).json(expense);
+	} catch (error) {
+		next(error);
+	}
+};
+
+export const getByUser = async (req: Request, res: Response, next: NextFunction) => {
+	try {
+		const user = req.body.loggedInUser;
+		const expenses = await expenseController.getByUser(user);
+		res.status(200).json(expenses);
 	} catch (error) {
 		next(error);
 	}

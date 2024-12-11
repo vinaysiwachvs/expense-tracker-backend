@@ -1,19 +1,17 @@
 import mongoose, { Schema } from 'mongoose';
-import { IExpense } from '../interface/expense';
+import { ICategory } from '../interface/categroy';
 
-const ExpenseSchema = new Schema<IExpense>(
+const CategorySchema = new Schema<ICategory>(
 	{
 		name: { type: String, required: true },
-		amount: { type: Number, required: true },
-		category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
 		created_by: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 		created_at: { type: Date, default: Date.now, immutable: true },
 		updated_by: { type: Schema.Types.ObjectId, ref: 'User', required: true },
 		updated_at: { type: Date, default: Date.now },
 	},
 	{
-		collection: 'expense',
+		collection: 'category',
 	},
 );
 
-export default mongoose.model<IExpense>('Expense', ExpenseSchema);
+export default mongoose.model<ICategory>('Category', CategorySchema);

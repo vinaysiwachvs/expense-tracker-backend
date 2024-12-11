@@ -1,0 +1,29 @@
+@url = http://localhost:5001/api/categories
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU5MzIyZWE3Y2MyYjFlZmYwYzBjMmYiLCJpYXQiOjE3MzM4OTkxNzEsImV4cCI6MTczMzk4NTU3MX0.wdjDtR0ipQQdTnKNJ88shLolaSm6I8KOvZVHPQNeHXM
+@id=67592dfc05fca9682b041ec3
+@name=food
+
+###Get Categories
+GET {{url}}/user
+Authorization: bearer {{token}}
+
+###Get Categories
+GET {{url}}
+Authorization: bearer {{token}}
+
+###Get category by id
+GET {{url}}/{{id}}
+Authorization: bearer {{token}}
+
+###Get category by name
+GET {{url}}/{{name}}
+Authorization: bearer {{token}}
+
+### Create category
+POST {{url}}
+Content-Type: application/json
+Authorization: bearer {{token}}
+
+{
+    "name":"Food"
+}

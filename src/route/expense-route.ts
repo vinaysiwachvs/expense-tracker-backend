@@ -3,6 +3,9 @@ const router = express.Router();
 import * as expenseHandler from '../handler/expense-handler';
 import { authorizer } from '../common/middleware/authoriser';
 
+//Get all expenses of a particular user
+router.get('/user', authorizer, expenseHandler.getByUser);
+
 //Get all expenses
 router.get('/', authorizer, expenseHandler.get);
 

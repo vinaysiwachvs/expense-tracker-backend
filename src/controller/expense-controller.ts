@@ -13,6 +13,10 @@ export default class ExpenseController {
 		return await this._expenseService.getById(id);
 	}
 
+	public async getByUser(user: IUser): Promise<IExpense[]> {
+		return await this._expenseService.getByUser(user);
+	}
+
 	public async create(user: IUser, name: string, amount: number, category: string): Promise<string> {
 		return await this._expenseService.create(user, name, amount, category);
 	}

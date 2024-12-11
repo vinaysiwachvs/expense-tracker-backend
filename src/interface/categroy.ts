@@ -1,10 +1,8 @@
 import mongoose from 'mongoose';
 
-export interface IExpense {
+export interface ICategory {
 	_id?: string | mongoose.Types.ObjectId;
 	name: string;
-	amount: number;
-	category: string | mongoose.Types.ObjectId;
 	created_by: string | mongoose.Types.ObjectId;
 	created_at?: Date;
 	updated_by: string | mongoose.Types.ObjectId;
