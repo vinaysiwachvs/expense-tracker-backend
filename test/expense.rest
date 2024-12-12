@@ -1,6 +1,7 @@
 @url = http://localhost:5001/api/expenses
-@id = 675984d6d4007b4e277033c6
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU5MzIyZWE3Y2MyYjFlZmYwYzBjMmYiLCJpYXQiOjE3MzM4OTkxNzEsImV4cCI6MTczMzk4NTU3MX0.wdjDtR0ipQQdTnKNJ88shLolaSm6I8KOvZVHPQNeHXM
+@id = 675a5ff77bd0303358e41715
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU5Y2JlOTdiZDAzMDMzNThlNDE1ZDUiLCJpYXQiOjE3MzM5NzY4NjMsImV4cCI6MTczNDA2MzI2M30.7skqA6iniJJSf3ClkyaRHtf5a1EbHNnWQabc_Yq6ZEg
+@budget_id=6759cc937bd0303358e41637
 
 ### Get all expenses
 GET {{url}}
@@ -14,14 +15,18 @@ Authorization: bearer {{token}}
 GET {{url}}/{{id}}
 Authorization: bearer {{token}}
 
+### Get expense by budget id
+GET {{url}}/budget/{{budget_id}}
+Authorization: bearer {{token}}
+
 ### Create Expense
 POST {{url}}
 Content-Type: application/json
 Authorization: bearer {{token}}
 
 {
-    "name":"Burger",
-    "category":"Food",
+    "name":"Hotel",
+    "budget":"Varanasi",
     "amount":1000
 }
 
@@ -31,9 +36,8 @@ Content-Type: application/json
 Authorization: bearer {{token}}
 
 {
-    "name":"Burger King",
-    "category":"Food",
-    "amount":2000
+    "name":"Bus",
+    "amount":1500
 }
 
 ### Remove Expense by id

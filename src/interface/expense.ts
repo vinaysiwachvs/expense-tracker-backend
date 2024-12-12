@@ -4,7 +4,7 @@ export interface IExpense {
 	_id?: string | mongoose.Types.ObjectId;
 	name: string;
 	amount: number;
-	category: string | mongoose.Types.ObjectId;
+	budget: string | mongoose.Types.ObjectId;
 	created_by: string | mongoose.Types.ObjectId;
 	created_at?: Date;
 	updated_by: string | mongoose.Types.ObjectId;

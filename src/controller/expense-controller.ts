@@ -1,3 +1,4 @@
+import { getByBudget } from './../handler/expense-handler';
 import { IExpense } from '../interface/expense';
 import { IUser } from '../interface/user';
 import ExpenseService from '../service/expense-service';
@@ -17,12 +18,16 @@ export default class ExpenseController {
 		return await this._expenseService.getByUser(user);
 	}
 
-	public async create(user: IUser, name: string, amount: number, category: string): Promise<string> {
-		return await this._expenseService.create(user, name, amount, category);
+	public async getByBudget(user: IUser, budgetId: string): Promise<IExpense[]> {
+		return await this._expenseService.getByBudget(user, budgetId);
 	}
 
-	public async update(user: IUser, id: string, name: string, amount: number, category: string): Promise<void> {
-		await this._expenseService.update(user, id, name, amount, category);
+	public async create(user: IUser, name: string, amount: number, budget: string): Promise<string> {
+		return await this._expenseService.create(user, name, amount, budget);
+	}
+
+	public async update(user: IUser, id: string, name: string, amount: number): Promise<void> {
+		await this._expenseService.update(user, id, name, amount);
 	}
 
 	public async remove(user: IUser, id: string): Promise<void> {

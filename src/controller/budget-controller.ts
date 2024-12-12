@@ -17,14 +17,8 @@ export default class BudgetController {
 		return await this._budgetService.getById(id);
 	}
 
-	public async create(
-		user: IUser,
-		category: string,
-		total_amount: number,
-		month: string,
-		year: number,
-	): Promise<string> {
-		return await this._budgetService.create(user, category, total_amount, month, year);
+	public async create(user: IUser, name: string, category: string, total_amount: number): Promise<string> {
+		return await this._budgetService.create(user, name, category, total_amount);
 	}
 
 	public async update(user: IUser, id: string, total_amount: number): Promise<void> {

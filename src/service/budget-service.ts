@@ -30,6 +30,14 @@ export default class BudgetService {
 		return budget;
 	}
 
+	public async getByName(user: IUser, name: string): Promise<IBudget> {
+		const budget = await Budget.findOne({ name, created_by: user._id }).lean();
+		if (!budget) {
+			throw new Error('Budget not found');
+		}
+		return budget;
+	}
+
 	public async getByCategoryAndUser(user: IUser, category: string): Promise<IBudget> {
 		const budget = await Budget.findOne({ category, created_by: user._id }).lean();
 		if (!budget) {
@@ -38,20 +46,13 @@ export default class BudgetService {
 		return budget;
 	}
 
-	public async create(
-		user: IUser,
-		category: string,
-		total_amount: number,
-		month: string,
-		year: number,
-	): Promise<string> {
+	public async create(user: IUser, name: string, category: string, total_amount: number): Promise<string> {
 		const fullCategory = await this._categoryService.getByName(user, category);
 		const budgetInput: IBudget = {
+			name,
 			category: fullCategory._id as string,
 			total_amount,
 			used_amount: 0,
-			month,
-			year,
 			created_by: user._id as string,
 			updated_by: user._id as string,
 		};
@@ -76,8 +77,7 @@ export default class BudgetService {
 		await Budget.findByIdAndDelete(id);
 	}
 
-	public async updateUsedAmount(user: IUser, category: string, used_amount: number): Promise<void> {
-		const budget = await this.getByCategoryAndUser(user, category);
+	public async updateUsedAmount(user: IUser, budget: IBudget, used_amount: number): Promise<void> {
 		budget.used_amount += used_amount;
 		budget.updated_by = user._id as string;
 		await this._save(budget, false);

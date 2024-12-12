@@ -16,7 +16,7 @@ Content-Type: application/json
 
 {
     "name":"vinay",
-    "email":"email@gmail.com",
+    "email":"emai@gmail.com",
     "password":"password"
 }
 
@@ -25,8 +25,8 @@ POST {{url}}/login
 Content-Type: application/json
 
 {
-    "email":"email@gmail.com",
-    "password":"password"
+    "email":"vinay12siwach@gmail.com",
+    "password":"123456"
 }
 
 ### Logout User

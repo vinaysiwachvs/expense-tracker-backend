@@ -35,8 +35,8 @@ export const getById = async (req: Request, res: Response, next: NextFunction) =
 export const create = async (req: Request, res: Response, next: NextFunction) => {
 	try {
 		const user = req.body.loggedInUser;
-		const { category, total_amount, month, year } = req.body;
-		const _id = await budgetController.create(user, category, total_amount, month, year);
+		const { name, category, total_amount } = req.body;
+		const _id = await budgetController.create(user, name, category, total_amount);
 		res.status(200).json({ _id, message: 'Budget created successfully' });
 	} catch (error) {
 		next(error);
